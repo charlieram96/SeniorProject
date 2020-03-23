@@ -1,0 +1,46 @@
+.navbar {
+    background: rgba(0, 0,0, .6);
+  }
+  .navbar-brand img {
+    height: 2rem;
+  }
+
+.select-box {
+  cursor: pointer;
+  position : relative;
+  max-width:  20em;
+  margin: 5em auto;
+  width: 100%;
+}
+
+.caption {
+
+  padding-top: 100px;
+  text-align: center;
+  font-weight: 350;
+}
+
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+  
+  #header_ws {
+    padding-top: 40px;
+    font-size: 3rem;
+  }
+
+  #text_ws {
+    font-size: 1.1rem;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  
+
+  #page-wrap {
+    top: 13%;
+    width: 100%;
+    color: white;
+  }
+}

@@ -1,0 +1,97 @@
+body {
+  overflow-x: hidden;
+}
+.navbar {
+  background: rgba(0, 0,0, .6);
+}
+.navbar-brand img {
+  height: 2rem;
+}
+
+/* Old code v1.0
+.video-background {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0, 0,0, .2);
+}
+*/
+
+#videoplayer {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0, 0,0, .2);
+}
+
+.caption {
+  position: absolute;
+  top: 23%;
+  width: 100%;
+  color: white;
+}
+
+.lead {
+  padding-left: 11%;
+  padding-right: 11%;
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  .navbar {
+    background: rgba(0, 0,0, .6);
+  }
+  .navbar-brand img {
+    height: 2rem;
+  }
+  
+  #header1 {
+    font-size: 3rem;
+  }
+
+  #text1 {
+    font-size: 1.1rem;
+  }
+
+  .video-background {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0,0, .2);
+  }
+  
+  .caption {
+    position: absolute;
+    top: 13%;
+    width: 100%;
+    color: white;
+  }
+  
+  .lead {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+
+
+
+/*============ BOOTSTRAP BREAK POINTS:
+
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+
+=============*/
