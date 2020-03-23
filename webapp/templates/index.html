@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>AI for all</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/fixed.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar navbar-dark fixed-top">
+	<a class="navbar-brand mx-auto" href="{{ url_for('index') }}"><img src="/static/images/logo.png" alt=""></a>
+</nav> 
+
+<!--- Old code v1.0
+<div class="video-background">
+	<div class="video-wrap">
+		<div id="video">
+			<video id="bgvid" autoplay loop muted playsinline>
+				<source src="stars.mp4" type="video/mp4">
+			</video>
+		</div>
+	</div>
+</div>
+--->
+
+<div id="videoplayer">
+  <div class="video-wrap">
+		<div id="videos">
+		</div>
+	</div>
+</div>
+
+<div class="caption text-center" id="page-wrap">
+	<h1 class="display-3" id="header1">ai for all</h1>
+	<p class="lead" id="text1">As technology rapidly advances, we find ourselves in the midst of the next industrial revolution, one powered by 
+		<b>machine learning</b> and <b>AI</b>. While big businesses have the resources to keep up with these changes, 
+		smaller businesses usually fall behind and as a result, lose profits or <b>go out of business</b>.
+		Our goal is to bring machine learning and AI technologies to smaller businesses and allow the playing field to equal. 
+		</p>
+	<a class="btn btn-outline-light btn-md" href="#plan" id="button1">
+		See our plan
+	</a>
+</div>
+
+<section>
+    <div class="container" id="plan" style="padding-top: 100px;">
+      <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-2">
+          <div class="p-5">
+            <img class="img-fluid rounded-circle" src="/static/images/web_scraper.png" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <div class="p-5">
+            <h2 class="display-4" style="font-weight: 350;">A Web Scraper...</h2>
+            <p>Web scraping, also known as web crawling, allows us to recover data
+			 from various websites and store the information in a databse. For this particular project, 
+			 we scraped data from <b>Amazon</b>. The web scraper will look for the product the user specifies 
+			 and collect variuos information (price, rating, etc.) from that product. This information will 
+			 then be analyzed using machine learning models. </p>
+			<a class="btn btn-outline-dark btn-sm" href="{{ url_for('scraper_page') }}">Try it yourself</a>
+		</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="p-5">
+            <img class="img-fluid rounded-circle" src="/static/images/machine_learning.png" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="p-5">
+            <h2 class="display-4" style="font-weight: 350;">Some machine learning...</h2>
+            <p>The data we have scraped will be stored in a database. This data, however, is useless by itself. To extract 
+				value from it we must analyze it. To do this, we have developed a machine learning model that allow us to 
+				inspect the data we have collected and find intereting and useful patterns within it. 
+			</p>
+			<a class="btn btn-outline-dark btn-sm" href="{{ url_for('ml_page') }}"">See how it works</a>
+		</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-2">
+          <div class="p-5">
+            <img class="img-fluid rounded-circle" src="/static/images/a_product.png" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <div class="p-5">
+            <h2 class="display-4" style="font-weight: 350;">And a product</h2>
+            <p>Our goal is to provide a cheap and accessible way for everyone, particularly small businesses, to keep up with
+			   the rapid changes in technology. AI and machine learning are fields that have been traditionally dominated by big businesses.
+			   With this product, however, we will be able to provide <b>AI for all</b>.
+			</p>
+			<a class="btn btn-outline-dark btn-sm" href="{{ url_for('product_page') }}">Experience the results</a>
+		</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!--- Script Source Files -->
+<script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/video_background.js') }}"></script>
+<script src="{{ url_for('static', filename='js/smooth_scroll.js') }}"></script>
+<!--- End of Script Source Files -->
+</body>
+</html>
+

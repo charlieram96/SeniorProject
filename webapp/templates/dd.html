@@ -1,0 +1,20 @@
+<html>
+    <head>
+     <script type="text/javascript">
+     function ExampleJS(){
+        var jFirst = document.getElementById("fname").value;
+        var jLast = document.getElementById("lname").value;
+        alert("Your name is: " + jFirst + " " + jLast);
+     }
+     </script>
+
+    </head>
+    <body>
+        <FORM NAME="myform" onSubmit="JavaScript:ExampleJS()">
+
+             First name: <input type="text" id="fname" name="firstname" /><br />
+             Last name:  <input type="text" id="lname" name="lastname" /><br />
+            <input name="Submit"  type="submit" value="Update" />
+        </FORM>
+    </body>
+</html>
