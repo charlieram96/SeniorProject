@@ -2,6 +2,24 @@ import scrapy
 from scrapy.crawler import CrawlerProcess
 from ws_seniorproject.items import WsSeniorprojectItem
 
+import anvil.server
+anvil.server.connect("NKXRGGX7XSN2R62J2LJD6ZK7-7AAMKKIFB3J7JTCC")
+from anvil.tables import app_tables
+
+@anvil.server.callable
+def delete_rows():
+        app_tables.products.delete_all_rows() 
+
+words='default'
+
+while words == 'default':
+   @anvil.server.callable
+   def get_terms(term):
+        global words
+        words = 'default' 
+        words = term
+        return words
+
 class TestfileSpider(scrapy.Spider):
     
     # start section 1:
@@ -269,10 +287,19 @@ class TestfileSpider(scrapy.Spider):
         items['ASIN_Number'] = asin
         #items['Prime']
         #items['First_Listed']
+        
+        app_tables.products.add_row(product_name=title, product_sale_price=price, product_rating=rating,
+        rating_count=rating_count, percent_5_stars=percent_5_star, percent_4_stars=percent_4_star, percent_3_stars=percent_3_star,
+        percent_2_stars=percent_2_star, percent_1_stars=percent_1_star, answered=answered, descriptMain=descriptMain, 
+        prod_desc=prod_desc, dim=dim, asin=asin)
 
         yield items
 
     # end section 3
+
+@anvil.server.callable
+def get_products():
+  return app_tables.products.search()
 
 #process = CrawlerProcess({'USER_AGENT': 'Mozilla/5.0', 'FEED_FORMAT': 'json', 'FEED_URI': 'data.json'})
 #process.crawl(TestfileSpider)
