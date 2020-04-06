@@ -2,6 +2,20 @@ import scrapy, re
 from scrapy.crawler import CrawlerProcess
 from ws_seniorproject.items import WsSeniorprojectItem
 
+import anvil.server
+from anvil.tables import app_tables
+anvil.server.connect("NKXRGGX7XSN2R62J2LJD6ZK7-7AAMKKIFB3J7JTCC")
+
+
+words='default'
+while words == 'default':
+    @anvil.server.callable
+    def get_terms(term):
+        global words
+        words = term
+        print(words)
+        return words
+
 class TestfileSpider(scrapy.Spider):
     
     # start section 1:
@@ -16,7 +30,7 @@ class TestfileSpider(scrapy.Spider):
 
     name = 'testfile'
     allowed_domains = ['amazon.com']
-    search_terms = input("Enter search term: ")
+    search_terms = words #input("Enter search term: ")
     print("Search term: " + search_terms)
     
     search_terms_list = search_terms.split()
@@ -328,6 +342,7 @@ class TestfileSpider(scrapy.Spider):
             if fit == '\n':
                 fit2 = response.css('div.a-section a#HIF_link span.a-size-base::text')[0].extract().strip('Fits as expected %()')
                 fit2 = int(fit2)
+                fit = fit2
                 items['Fit_As_Expected'] = fit2
             else:
                 fit = int(fit)
@@ -436,11 +451,22 @@ class TestfileSpider(scrapy.Spider):
 
         #items['Prime'] = product_dimensions
 
+        app_tables.clean_products.add_row(product_name=title, low_price=low_price, high_price=high_price, product_rating=rating,
+        rating_count=rating_count, percent_5_stars=percent_5_star, percent_4_stars=percent_4_star, percent_3_stars=percent_3_star,
+        percent_2_stars=percent_2_star, percent_1_star=percent_1_star, category=category_final, sales_rank=rank, 
+        descriptMain=descriptMain, rank_category=rank_category, answered=answered, dim_length=dim_len, dim_width=dim_width, 
+        dim_height=dim_height, first_listed=first_listed, Fit_As_Expected=fit, asin_num=asin_number)
+
         yield items
 
     # end section 3
+
+@anvil.server.callable
+def get_products():
+    return app_tables.clean_products.search()
 
 #process = CrawlerProcess({'USER_AGENT': 'Mozilla/5.0', 'FEED_FORMAT': 'json', 'FEED_URI': 'data.json'})
 #process.crawl(TestfileSpider)
 #process.start()
 
+#anvil.server.wait_forever()
